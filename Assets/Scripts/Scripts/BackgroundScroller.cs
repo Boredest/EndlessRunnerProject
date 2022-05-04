@@ -3,17 +3,16 @@ using UnityEngine;
 
 public class BackgroundScroller : MonoBehaviour
 {
-    [Range(-1f,3f)]
+    [Range(-1f,5f)]
     public float scrollSpeed = 1.75f;
     private float offset;
     private Material mat;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         mat = GetComponent<Renderer>().material;
-
     }
-
+ 
     // Update is called once per frame
     void Update()
     {
