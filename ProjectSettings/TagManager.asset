@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - ground
+  - Destroyer
   layers:
   - Default
   - TransparentFX
