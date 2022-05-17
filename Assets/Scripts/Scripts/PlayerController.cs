@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [Range(3,8)]
     public float jumpVelocity;
     private float bufferCheck = 0.1f; //slightly above zero
+    public float fallMultiplier = 2.5f;
 
     public LayerMask groundLayer;
     private void Awake()
@@ -28,9 +29,15 @@ public class PlayerController : MonoBehaviour
         
         if (isGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
-
             rb.velocity = Vector2.up * jumpVelocity;
         }
+
+        if(rb.velocity.y < -3)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 2) * Time.deltaTime;
+        }
+     
+ 
     }//Update
 
     private bool isGrounded()
@@ -39,6 +46,15 @@ public class PlayerController : MonoBehaviour
         return Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, bufferCheck, groundLayer);
 
 }//isGrounded
-  
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Obstacle")
+        {
+            Destroy(gameObject);
+            //GameOver();
+        }
+    }//OnCol
+
 
 }

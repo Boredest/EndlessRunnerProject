@@ -21,6 +21,7 @@ public class Spawner : MonoBehaviour
     }//Awake
     public void OnEnable()
     {
+        //pick from array of prefabs
         n = Random.Range(0, objPrefab.Length);
         InvokeRepeating(nameof(SpawnObj), spawnRate, delayTime);
     }
