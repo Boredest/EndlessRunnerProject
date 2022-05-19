@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider2D;
+    public GameManager gameManager;
     [Range(3,8)]
     public float jumpVelocity;
     private float bufferCheck = 0.1f; //slightly above zero
@@ -51,8 +52,8 @@ public class PlayerController : MonoBehaviour
     {
         if(other.gameObject.tag == "Obstacle")
         {
-            Destroy(gameObject);
-            //GameOver();
+            this.gameObject.SetActive(false);
+            gameManager.GameOver();
         }
     }//OnCol
 
