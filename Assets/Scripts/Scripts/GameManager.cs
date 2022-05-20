@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
    
 
     public PlayerController player;
-    private Vector3 spawnPos = new Vector3 (-7f, -3.5f, -1f);
+    public Vector3 spawnPos = new Vector3 (-7f, -1.4f, -1f);
     private void Start()
     {
         gameOverText.gameObject.SetActive(false);

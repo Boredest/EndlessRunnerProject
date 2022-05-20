@@ -8,8 +8,9 @@ public class Spawner : MonoBehaviour
     int n;
     public float spawnTime = 0.1f;
     public float repeatRate = 1.0f;
-    private float ySpawnPos = -3.5f;
+    public float ySpawnPos = -1.4f;
     public float xSpawnPos;
+    public float offSet = 13.0f;
  
 
     public void Awake()
@@ -30,7 +31,7 @@ public class Spawner : MonoBehaviour
 
     public void SpawnObj() {
         //ranPos
-        xSpawnPos = Random.Range(12, 20.5f);
+        xSpawnPos = Random.Range(12, 25.5f);
         transform.position = new Vector3(xSpawnPos,ySpawnPos, 0);
         Instantiate(objPrefab[n], transform.position, Quaternion.identity);
 
