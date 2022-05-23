@@ -10,12 +10,11 @@ public class Spawner : MonoBehaviour
     public float repeatRate = 1.0f;
     public float ySpawnPos = -1.4f;
     public float xSpawnPos;
-    public float offSet = 13.0f;
- 
-
+    public Vector3 offSet;
+    
     public void Awake()
     {
-    
+        
     }//Awake
     public void OnEnable()
     {
@@ -30,22 +29,22 @@ public class Spawner : MonoBehaviour
     }
 
     public void SpawnObj() {
-        //ranPos
-        xSpawnPos = Random.Range(12, 25.5f);
-        transform.position = new Vector3(xSpawnPos,ySpawnPos, 0);
-        Instantiate(objPrefab[n], transform.position, Quaternion.identity);
+        xSpawnPos = Random.Range(12, 20);
+        offSet = new Vector3(xSpawnPos, 0, 0);
+        Instantiate(objPrefab[n], transform.position + offSet , Quaternion.identity);
+       
+
 
     }//SpawnObj
 
-   
+ 
 
-    public void OnCollisionEnter2D(Collision2D other)
+    private void Update()
     {
-        if(other.gameObject.tag == "Destroyer")
-        {
-            Destroy(gameObject);
-        }
+        
     }
+
+
 
 
 }
