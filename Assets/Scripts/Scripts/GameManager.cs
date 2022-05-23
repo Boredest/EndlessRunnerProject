@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public TMP_Text timerText;
     public TMP_Text gameOverText;
+    public TMP_Text scoreText;
     float currentTime;
     int score;
     private bool gameOver = false;
@@ -14,10 +15,21 @@ public class GameManager : MonoBehaviour
 
     public PlayerController player;
     public Vector3 spawnPos = new Vector3 (-7f, -1.4f, -1f);
+
+    private void Awake()
+    {
+        timerText.outlineWidth = 0.2f;
+        timerText.outlineColor = new Color32(48, 48, 48, 255);
+        scoreText.outlineWidth = 0.2f;
+        scoreText.outlineColor = new Color32(48, 48, 48, 255);
+        gameOverText.outlineWidth = 0.2f;
+        gameOverText.outlineColor = new Color32(48, 48, 48, 255);
+    }
     private void Start()
     {
         gameOverText.gameObject.SetActive(false);
         score = 0;
+        scoreText.SetText(score.ToString());
     }
     // Update is called once per frame
     void Update()
@@ -41,9 +53,6 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(true);
         Time.timeScale = 0.0f;
 
-        //display game over text and p
-
-
     }//GameOver
 
     public void Respawn()
@@ -51,6 +60,7 @@ public class GameManager : MonoBehaviour
         //reset timer, score, and player position and destroy old objs
         currentTime = 0.0f;
         score = 0;
+        scoreText.SetText(score.ToString());
         player.gameObject.SetActive(true);
         player.transform.position = spawnPos;
         gameOverText.gameObject.SetActive(false);
@@ -62,15 +72,13 @@ public class GameManager : MonoBehaviour
             Destroy(brick);
         }
         
-        
-        
-        
-
 
     }//Respawn
 
-    private void Score()
+    public void Score()
     {
+        score++;
+        scoreText.SetText(score.ToString());
         //track score
     }
 

@@ -20,15 +20,15 @@ public class PlayerController : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
     }//Awake
 
-    void Start()
+    private void Start()
     {
       
     }//Start
 
-    void Update()
+    private void Update()
     {
         
-        if (isGrounded() && Input.GetKeyDown(KeyCode.Space))
+        if (isGrounded() && Input.GetKeyDown(KeyCode.Space) || isGrounded() && Input.GetKeyDown(KeyCode.W))
         {
             rb.velocity = Vector2.up * jumpVelocity;
         }
@@ -56,6 +56,14 @@ public class PlayerController : MonoBehaviour
             gameManager.GameOver();
         }
     }//OnCol
+
+    public void OnTriggerEnter2D(Collider2D coll)
+    {
+        if(coll.gameObject.tag == "Obstacle")
+        {
+            gameManager.Score();
+        }
+    }
 
 
 }
