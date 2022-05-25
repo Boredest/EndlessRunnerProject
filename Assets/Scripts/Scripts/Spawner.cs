@@ -11,6 +11,9 @@ public class Spawner : MonoBehaviour
     public float ySpawnPos = -1.4f;
     public float xSpawnPos;
     public Vector3 offSet;
+
+    public float maxX = 30.0f;
+    public float minX = 12.0f;
     
     public void Awake()
     {
@@ -29,22 +32,10 @@ public class Spawner : MonoBehaviour
     }
 
     public void SpawnObj() {
-        xSpawnPos = Random.Range(12, 20);
+        xSpawnPos = Random.Range(minX, maxX);
         offSet = new Vector3(xSpawnPos, 0, 0);
         Instantiate(objPrefab[n], transform.position + offSet , Quaternion.identity);
-       
-
 
     }//SpawnObj
-
- 
-
-    private void Update()
-    {
-        
-    }
-
-
-
 
 }

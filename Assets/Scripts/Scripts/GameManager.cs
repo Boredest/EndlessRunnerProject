@@ -31,11 +31,10 @@ public class GameManager : MonoBehaviour
         score = 0;
         scoreText.SetText(score.ToString());
     }
-    // Update is called once per frame
-    void Update()
+   
+    private void Update()
     {
-        
-        //timer
+  
         currentTime += Time.deltaTime;
         timerText.text = currentTime.ToString("F1");
 
@@ -79,7 +78,7 @@ public class GameManager : MonoBehaviour
     {
         score++;
         scoreText.SetText(score.ToString());
-        //track score
+     
     }
 
   
